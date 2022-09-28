@@ -6,7 +6,6 @@ var jwt = require('jsonwebtoken');
 var pug = require('pug');
 var compression = require('compression');
 
-const emailController = require('./src/email/email.controller');
 const spreadsheetsModels = require('./src/spreadsheets/spreadsheets.models');
 
 require('dotenv').config();
