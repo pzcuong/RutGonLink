@@ -37,6 +37,10 @@ app.get('/:linkrutgon', async(req, res) => {
     return res.redirect('/');
 });
 
+app.get('/', (req, res) => {
+    return res.redirect('https://banhoctap.dev');
+});
+
 app.use((req, res, next) => {
     let html = pug.renderFile('public/404.pug', {
         message: 'OOps! Page not found',
@@ -52,60 +56,3 @@ app.use(express.static('/public'));
 app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
-
-async function XuLyDuLieu(data) {
-    if(!data.name || data.name.length < 5)
-        return ({
-            success: false,
-            message: "Họ và tên không hợp lệ!"
-        })
-    if(!data.email || !data.email.includes('@') || !data.email.includes('.'))
-        return ({
-            success: false,
-            message: "Email không hợp lệ. Khuyến khích sử dụng email của trường!"
-        })
-    if(!data.mssv || data.mssv.length != 8)
-        return ({
-            success: false,
-            message: "Mã số sinh viên không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    if(!data.LopSV)
-        return ({
-            success: false,
-            message: "Lớp sinh viên không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    if(!data.FacebookURL || !data.FacebookURL.includes('.com'))
-        return ({
-            success: false,
-            message: "Facebook URL không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    if(!data.LyDoThamGia || data.LyDoThamGia.length < 5)   
-        return ({
-            success: false,
-            message: "Lý do tham gia không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    if(!data.TinhCachMuonLamViec || data.TinhCachMuonLamViec.length < 5)
-        return ({
-            success: false,
-            message: "Tính cách muốn làm việc không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    if(!data.TinhCachKhongMuonLamViec || data.TinhCachKhongMuonLamViec.length < 5)
-        return ({
-            success: false,
-            message: "Tính cách không muốn làm việc không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    if(!data.TinhHuong || data.TinhHuong.length < 5) 
-        return ({
-            success: false,
-            message: "Tình huống không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    if(!data.CauHoi2 || data.CauHoi2.length < 5)
-        return ({
-            success: false,
-            message: "Câu hỏi 2 không hợp lệ. Vui lòng kiểm tra lại!"
-        })
-    return ({
-        success: true,
-        message: "Dữ liệu hợp lệ!"
-    })
-}
